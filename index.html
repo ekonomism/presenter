@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VR presenter</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700" rel="stylesheet">
+    </head>
+         
+<body>
+     <div class="container">
+        <img src="projektor.jpg">
+        <div class="headline">
+        <h1>PRESENTER by Ekonomism</h1>
+        <p>Select username and presentation name. You need to have a presentation prepared in slides.com and a user account. When the control panel is open, log in with your Slides account. You may decrease or increase the size of the presentation by using the buttons "decrease" and "increase".</p>
+        </div>
+        <input type="text" id="textu" name="name" class="usert" value="" />
+        <p class="presenter-button btnsuserr">Username</p>
+        <input type="text" id="textp" name="name" class="prest" value="" />
+        <p class="presenter-button btnspresr">Presentation (slug)</p>
+        <button type="button" class="presenter-button btnopen" value="open">Open presentation</button>
+        <button type="button" class="presenter-button btnclose" value="close">Close presentation</button>
+        <button type="button" class="presenter-button btndecrease" value="decrease"><< decrease</button>
+        <button type="button" class="presenter-button btnincrease" value="increase">increase >></button>
+     </div>
+
+<style>
+body {
+ margin: 0;
+ width: 100%;
+ font-family: 'Raleway', sans-serif;
+ color: white;
+ overflow: hidden;
+}
+
+/* Container needed to position the button. Adjust the width as needed */
+.container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+} 
+ 
+/* Make the image responsive */
+.container img {
+  width: 100%;
+  height: auto;
+} 
+
+.container .headline {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  color: white;
+}
+  
+/* User textfield */
+.container .usert {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  opacity: 0.7;
+}
+
+/* Presentation textfield */
+.container .prest {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  opacity: 0.7;
+}
+
+/* Text user */
+.container .btnsuserr {
+  position: absolute;
+  top: 38%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  opacity: 0.7;
+}
+
+/* Text presentation */
+.container .btnspresr {
+  position: absolute;
+  top: 48%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color: white;
+  padding: 6px 12px;
+  font-size: 16px;
+  border: none;
+    border-radius: 5px;
+  opacity: 0.7;
+}
+
+/* Open presentation */
+.container .btnopen {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  opacity: 0.7;
+}
+
+.container .btnopen:hover {
+  background-color: black;
+}
+
+/* Close presentation */
+.container .btnclose {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+    opacity: 0.7;
+}
+
+.container .btnclose:hover {
+  background-color: black;
+}
+
+/* Decrease size of presentation */
+.container .btndecrease {
+  position: absolute;
+  top: 80%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+    opacity: 0.7;
+}
+
+.container .btndecrease:hover {
+  background-color: black;
+}
+
+/* Increase size of presentation */
+.container .btnincrease {
+  position: absolute;
+  top: 80%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+    opacity: 0.7;
+}
+
+.container .btnincrease:hover {
+  background-color: black;
+}
+   
+</style>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <script>
+            function main() {
+                // Send an event to presenterApp.js when the page loads and is ready to get things rolling
+                console.log("document ready");
+                var readyEvent = {
+                    "type": "ready",
+                };
+                document.getElementById("textu").value = localStorage.getItem("anvandare");
+                document.getElementById("textp").value = localStorage.getItem("presentation");
+                // The event bridge handles event represented as a string the best. So here we first create a Javascript object, then convert to stirng
+                EventBridge.emitWebEvent(JSON.stringify(readyEvent));
+                // Send an event when user click on the presenter button
+                $(".presenter-button").click(function(){
+                    console.log(this.value + " button click");
+                    // Skicka användare
+                    var anvandare = $("#textu").val();
+                    // Lagra anvandare
+                    localStorage.setItem("anvandare", anvandare);
+                    // Skicka presentation
+                    var presentation = $("#textp").val();
+                    // Lagra presentation
+                    localStorage.setItem("presentation", presentation);
+                    // Ladda presentation
+                    var clickEvent = {
+                        "type": "click",
+                        "presentation": presentation,
+                        "anvandare": anvandare,
+                        "data": this.value
+                    };
+                    var clickEJ = JSON.stringify(clickEvent);
+                    console.log(clickEJ);
+                    EventBridge.emitWebEvent(clickEJ);
+                });
+                // Nollställ fält user
+                $('#text_resetu').click(function() {
+                  $("#textu").val('');
+                });
+                // Nollställ fält presentation
+                $('#text_resetp').click(function() {
+                  $("#textp").val('');
+                });
+            }
+            $(document).ready(main);
+     </script>
+</body>
+</html>    
