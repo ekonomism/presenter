@@ -1,4 +1,4 @@
-# presenter
+# Presenter
 Presenter is an application for High Fidelity (www.highfidelity.com). 
 
 PRESENTER is a tool for showing slides from Slides.com. This script will let you choose your presentation in Slides and create a speaker view in front as well as a presentation behind you (your avatar). You need rez-rights to use it in a domain.
